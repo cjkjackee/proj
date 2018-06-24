@@ -2,9 +2,12 @@ package com.test.project.db;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.content.ContentValues.TAG;
 
 public class database {
     private SQLiteDatabase data;
@@ -30,5 +33,25 @@ public class database {
         cur.close();
 
         return DList;
+    }
+
+    public List<String> symptom(String table){
+        List<String> list = new ArrayList<>();
+        Cursor cur = data.rawQuery("SELECT * FROM " + table,null);
+
+        list.add("");
+
+        if (cur.moveToFirst()){
+            do{
+                String s;
+                s = cur.getString(0);
+
+                list.add(s);
+            }while(cur.moveToNext());
+        }
+
+        cur.close();
+
+        return list;
     }
 }
