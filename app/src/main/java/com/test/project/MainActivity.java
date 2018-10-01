@@ -17,27 +17,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView TextView01= (TextView)findViewById(R.id.TextView01);
-        Button Button02 = (Button)findViewById(R.id.Button02);
-        Button02.setOnClickListener(new View.OnClickListener(){
+        Button btn_map = (Button)findViewById(R.id.Button02);
+        btn_map.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,MainActivity.class);
+                Intent intent = new Intent(MainActivity.this,MapsActivity.class);
                 startActivity(intent);
             }
         });
-        Button Button01 = (Button)findViewById(R.id.Button01);
-        Button01.setOnClickListener(new View.OnClickListener() {
+        Button btn_diagnosis = (Button)findViewById(R.id.Button01);
+        btn_diagnosis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,search.class);
                 startActivity(intent);
             }
         });
-        Button Button03 = (Button)findViewById(R.id.Button03);
-        Button03.setOnClickListener(new View.OnClickListener(){
+        Button btn_calender = (Button)findViewById(R.id.Button03);
+        btn_calender.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,MainActivity.class);
+                Intent intent = new Intent(MainActivity.this,calender.class);
                 startActivity(intent);
             }
         });

@@ -21,15 +21,10 @@
         <TextView
 
             android:id="@+id/TextView01"
-
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content"
-
-            android:text="自動診斷病情APP"
-
+            android:text="@string/app_name"
             android:textAlignment="center"
-
             android:textColor="?android:attr/colorAccent"
             android:textSize="30sp"
             android:textStyle="bold"
@@ -47,14 +42,10 @@
         <Button
 
             android:id="@+id/Button01"
-
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content"
-
             android:background="@android:drawable/alert_dark_frame"
-
-            android:text="開始診斷"
+            android:text="@string/btn_start"
             android:textAlignment="center"
             android:textColor="@android:color/background_light"
             android:visibility="visible"
@@ -66,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:drawable/alert_dark_frame"
-            android:text="附近醫院"
+            android:text="@string/btn_hospital"
             android:textColor="@android:color/background_light"
             android:visibility="visible"
             tools:layout_editor_absoluteX="26dp"
@@ -77,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:drawable/alert_dark_frame"
-            android:text="健康日記"
+            android:text="@string/btn_calendar"
             android:textColor="@android:color/background_light"
             android:visibility="visible"
             tools:layout_editor_absoluteX="258dp"
