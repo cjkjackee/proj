@@ -23,7 +23,7 @@ public class calender extends AppCompatActivity {
     TextView date_textview;
     String date;
     TextView condition_textview;
-    databasehelper mycalendar;
+    databasehelper mycalendar = new databasehelper(this);
     Button viewall_btn;
     String datetoday = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).format(new Date());
     @Override
@@ -32,7 +32,6 @@ public class calender extends AppCompatActivity {
 
 
         setContentView(R.layout.activity_calender);
-        mycalendar = new databasehelper(this);
 
         calendarView = (CalendarView) findViewById(R.id.calendarView);
         viewall_btn = (Button)findViewById(R.id.viewall_btn) ;
@@ -41,6 +40,18 @@ public class calender extends AppCompatActivity {
         date_textview.setText(datetoday);
         date=datetoday;
 
+        showData();
+        condition_button();
+        viewalldata2();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        showData();
+    }
+
+    private void showData(){
         Cursor res = mycalendar.checkdate(date);
         if(res.getCount()==0){
             condition_textview.setText("No record!");
@@ -89,9 +100,6 @@ public class calender extends AppCompatActivity {
 
             }
         });
-
-        condition_button();
-        viewalldata2();
     }
 
     private void condition_button(){

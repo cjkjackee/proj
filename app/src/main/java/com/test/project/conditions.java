@@ -104,10 +104,11 @@ public class conditions extends AppCompatActivity {
                     else
                         Toast.makeText(conditions.this, "Data Not Updated", Toast.LENGTH_LONG).show();
                 }
+
+                finish();
             }
 
         });
-
     };
 
     public void viewdatedata() {

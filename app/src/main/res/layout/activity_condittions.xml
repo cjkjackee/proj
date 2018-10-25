@@ -120,9 +120,9 @@
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="26dp"
-        android:layout_marginBottom="128dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="172dp"
         android:text="@string/other_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/other_edittext"
@@ -139,7 +139,6 @@
         android:ems="10"
         android:hint="@string/other_edit"
         android:inputType="text|textPersonName"
-        app:layout_constraintBottom_toTopOf="@id/save1_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/symptoms_edittext" />
 
