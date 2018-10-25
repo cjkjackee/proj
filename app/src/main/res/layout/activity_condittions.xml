@@ -7,17 +7,40 @@
     tools:context=".conditions">
 
     <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="日期:"
+        app:layout_constraintEnd_toStartOf="@+id/date_textview2"
+        app:layout_constraintHorizontal_bias="0.392"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/date_textview2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="196dp"
+        android:layout_marginTop="8dp"
+        android:text="date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="@string/temp_name"
         app:layout_constraintEnd_toStartOf="@id/temperatue_edittext"
-        app:layout_constraintHorizontal_bias="0.449"
+        app:layout_constraintHorizontal_bias="0.379"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <TextView
         android:id="@+id/textView12"
@@ -36,13 +59,13 @@
         android:id="@+id/temperatue_edittext"
         android:layout_width="71dp"
         android:layout_height="44dp"
-        android:layout_marginEnd="192dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginEnd="184dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/temp_edit"
         android:inputType="textPersonName|numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/date_textview2" />
 
     <EditText
         android:id="@+id/bphigh_edittext"
@@ -116,34 +139,35 @@
         android:ems="10"
         android:hint="@string/other_edit"
         android:inputType="text|textPersonName"
-        app:layout_constraintBottom_toTopOf="@id/save_button"
+        app:layout_constraintBottom_toTopOf="@id/save1_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/symptoms_edittext" />
 
     <Button
-        android:id="@+id/save_button"
-        android:layout_width="wrap_content"
+        android:id="@+id/save1_button"
+        android:layout_width="88dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="16dp"
         android:text="@string/save_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/other_edittext"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/other_edittext" />
 
     <Button
         android:id="@+id/clear_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="12dp"
         android:layout_marginEnd="80dp"
         android:layout_marginBottom="16dp"
         android:text="@string/clear_button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/save_button"
+        app:layout_constraintEnd_toStartOf="@id/save1_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/other_edittext" />
+
+
 
 </android.support.constraint.ConstraintLayout>
