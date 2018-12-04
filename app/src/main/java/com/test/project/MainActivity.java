@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     private Button Button01;
     private Button Button02;
     private Button Button03;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
         btn_map.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,MapsActivity.class);
+                Intent intent = new Intent(MainActivity.this,hospital_list
+                        .class);
                 startActivity(intent);
             }
         });
