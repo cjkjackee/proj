@@ -1,5 +1,6 @@
 package com.test.project;
 
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,22 +11,28 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.test.project.db.databasehelper;
 import com.test.project.db.AssetsDatabaseManager;
 import com.test.project.db.database;
 import com.test.project.db.disease;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class search extends AppCompatActivity {
 
     TextView textView,Search_result;
     Spinner spinner,spinner1,spinner2,spinner3,spinner4,spinner5;
-    Button b1_summit,b2_reset,b3_search,b4_sub;
+    Button b1_summit,b2_reset,b3_search,b4_sub,b5_save;
 
-
+    databasehelper mycalendar;
+    boolean data_existed;
     ArrayAdapter<CharSequence> adapter;
     //  String selectedSys;
     String text,text1,text2,text3,text4,text5;
+    String datetoday = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).format(new Date());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +50,7 @@ public class search extends AppCompatActivity {
         spinner3 = (Spinner)findViewById(R.id.spinner3);
         spinner4 = (Spinner)findViewById(R.id.spinner4);
         spinner5 = (Spinner)findViewById(R.id.spinner5);
-
+        mycalendar = new databasehelper(this);
 
         Search_result = (TextView)findViewById(R.id.textView3);
 
@@ -51,6 +58,7 @@ public class search extends AppCompatActivity {
         b2_reset=(Button)findViewById(R.id.Reset_button);
         b3_search=(Button)findViewById(R.id.Search_button);
         b4_sub=(Button)findViewById(R.id.sub_button);
+        b5_save=(Button)findViewById(R.id.save_button);
 
         List<String> handLable = db.symptom("Hand");
         ArrayAdapter<String> handData = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,handLable);
@@ -70,6 +78,20 @@ public class search extends AppCompatActivity {
         spinner3.setAdapter(skinData);
         spinner4.setAdapter(handData);
         spinner5.setAdapter(otherData);
+
+        Cursor res = mycalendar.checkdate(datetoday);
+
+        if(res.getCount()==0){
+            //   showMessage("Empty","New data");
+            data_existed=false;
+        }
+        else{
+
+            //   StringBuffer buffer = new StringBuffer();
+            res.moveToNext();
+            data_existed=true;
+        }
+
 
         b1_summit.setOnClickListener(new Button.OnClickListener() {
             @Override
@@ -218,6 +240,7 @@ public class search extends AppCompatActivity {
 
 
         });
+        adddata();
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -301,4 +324,40 @@ public class search extends AppCompatActivity {
             }
         });
     }
+
+    public void adddata() {
+        b5_save.setOnClickListener(new Button.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                if (!data_existed) {
+                    boolean isInserted = mycalendar.insertdata(datetoday,
+                            null,
+                            null,
+                            null,
+                            textView.getText().toString(),
+                            null);
+                    if (isInserted)
+                        Toast.makeText(getBaseContext(), "Data Inserted", Toast.LENGTH_LONG).show();
+                    else
+                        Toast.makeText(getBaseContext(),"Data Not Inserted", Toast.LENGTH_LONG).show();
+                }
+                else if(data_existed){
+                    boolean isUpdated = mycalendar.updatedata(datetoday,
+                            null,
+                            null,
+                            null,
+                            textView.getText().toString(),null
+                            );
+                    if (isUpdated)
+                        Toast.makeText(getBaseContext(), "Data Updated", Toast.LENGTH_LONG).show();
+                    else
+                        Toast.makeText(getBaseContext(),"Data Not Updated", Toast.LENGTH_LONG).show();
+                }
+            }
+
+        });
+
+    };
 }

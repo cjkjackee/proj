@@ -13,12 +13,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.test.project.db.databasehelper;
+import com.test.project.db.AssetsDatabaseManager;
+import com.test.project.db.database;
+import com.test.project.db.disease;
+
+import java.util.List;
 
 public class conditions extends AppCompatActivity {
 
     EditText temperatue_edittext,bphigh_edittext,bplow_edittext,symptoms_edittext,other_edittext;
     TextView date_textview;
-    Button b1_save_button,b2_clear_button;
+    Button b1_save_button,b2_clear_button,b3_diagnosis_button;
     databasehelper mycalendar;
     boolean data_existed;
     String temp=null;
@@ -27,6 +32,11 @@ public class conditions extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_condittions);
+
+        AssetsDatabaseManager.initManager(getApplication());
+        AssetsDatabaseManager mg = AssetsDatabaseManager.getManager();
+        database db = new database();
+        db.setData(mg.getDatabase("project.db"));
 
         mycalendar = new databasehelper(this);
         temperatue_edittext = (EditText)findViewById(R.id.temperatue_edittext);
@@ -40,6 +50,7 @@ public class conditions extends AppCompatActivity {
 
         b1_save_button=(Button)findViewById(R.id.save1_button);
         b2_clear_button=(Button)findViewById(R.id.clear_button);
+        b3_diagnosis_button=(Button)findViewById(R.id.diagnosis_button);
 
 
 
@@ -62,7 +73,7 @@ public class conditions extends AppCompatActivity {
         }
 
 
-
+        searchdata();
         adddata();
         cleardata();
         String[] color = getResources().getStringArray(R.array.sysptoms);
@@ -109,6 +120,53 @@ public class conditions extends AppCompatActivity {
             }
 
         });
+    };
+
+    public void searchdata(){
+        b3_diagnosis_button.setOnClickListener(new Button.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                String message = "";
+                String line = symptoms_edittext.getText().toString();
+                String[] name = line.split(",");
+                String cmd = "";
+                //Search feunctions
+                AssetsDatabaseManager mg = AssetsDatabaseManager.getManager();
+                database db = new database();
+                db.setData(mg.getDatabase("project.db"));
+
+
+                if (name.length > 0) {
+                    cmd = "SELECT * FROM disease WHERE disease.id in (SELECT d_id FROM symptom WHERE symptom.name='" + name[0] + "'";
+                    for (int i = 1; i < name.length; ++i) {
+                        cmd += " INTERSECT ";
+                        cmd += "SELECT d_id FROM symptom WHERE symptom.name='" + name[i] + "'";
+                    }
+                    cmd += ")";
+
+                    List<disease> D = db.query(cmd);
+                    //pseudo ans
+                    if (D.size() > 0) {
+                        for (disease disease : D) {
+                            message += disease.getName() + ", ";
+                        }
+                    }
+                    else{
+                        message = "Nil" ;
+                    }
+
+                    showMessage("Diseases",message);
+                  //  other_edittext.append("diseases: " + message);
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Please insert a symptom for me", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+        });
+
     };
 
     public void viewdatedata() {

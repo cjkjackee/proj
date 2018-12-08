@@ -87,8 +87,8 @@
         android:id="@+id/symptoms_edittext"
         android:layout_width="241dp"
         android:layout_height="128dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginTop="36dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bplow_edittext" />
 
@@ -117,10 +117,10 @@
 
     <EditText
         android:id="@+id/other_edittext"
-        android:layout_width="wrap_content"
+        android:layout_width="219dp"
         android:layout_height="133dp"
+        android:layout_marginEnd="44dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="48dp"
         android:ems="10"
         android:hint="@string/other_edit"
         android:inputType="text|textPersonName"
@@ -131,8 +131,8 @@
         android:id="@+id/save1_button"
         android:layout_width="88dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
         android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/save_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -143,13 +143,28 @@
         android:id="@+id/clear_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
         android:layout_marginBottom="16dp"
+        android:layout_marginStart="56dp"
         android:text="@string/clear_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/other_edittext" />
 
+    <Button
+        android:id="@+id/diagnosis_button"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginBottom="44dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="8dp"
+        android:text="Diagnosis"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/save1_button"
+        app:layout_constraintHorizontal_bias="0.347"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/other_edittext"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </android.support.constraint.ConstraintLayout>
