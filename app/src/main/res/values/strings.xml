@@ -3,6 +3,7 @@
     <string name="btn_hospital">附近醫院</string>
     <string name="btn_calendar">健康日記</string>
     <string name="btn_start">開始診斷</string>
+    <string name="btn_alarm">吃藥提醒</string>
 
     string for layout_condition
     <string name="temp_name">溫度(°C):</string>

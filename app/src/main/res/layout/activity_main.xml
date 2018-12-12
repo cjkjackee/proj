@@ -5,13 +5,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
-
     android:layout_width="match_parent"
-
     android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    android:orientation="vertical"
-    android:padding="10dip">
     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,7 +16,6 @@
         android:orientation="vertical" >
 
         <TextView
-
             android:id="@+id/TextView01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,6 +26,18 @@
             android:textStyle="bold"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp" />
+
+        <TextView
+            android:id="@+id/view_news"
+            android:layout_width="264dp"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:marqueeRepeatLimit="-1"
+            android:singleLine="true"
+            />
 
         <ImageView
             android:id="@+id/imageView"
@@ -73,6 +81,17 @@
             android:visibility="visible"
             tools:layout_editor_absoluteX="258dp"
             tools:layout_editor_absoluteY="391dp" />
+
+        <Button
+            android:id="@+id/Button04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_alarm"
+            android:background="@android:drawable/alert_dark_frame"
+            android:textColor="@android:color/background_light"
+            tools:layout_editor_absoluteX="63dp"
+            tools:layout_editor_absoluteY="502dp" />
     </TableLayout>
+
 
 </android.support.constraint.ConstraintLayout>

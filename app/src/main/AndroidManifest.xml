@@ -42,7 +42,8 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".hospital_list"></activity>
+        <activity android:name=".hospital_list" />
+        <activity android:name=".alarm"></activity>
     </application>
 
 </manifest>
