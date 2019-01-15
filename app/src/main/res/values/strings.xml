@@ -26,5 +26,8 @@
         <item>Moffy</item>
     </string-array>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_alarm_list2">alarm_list2</string>
+    <string name="title_activity_news">news</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

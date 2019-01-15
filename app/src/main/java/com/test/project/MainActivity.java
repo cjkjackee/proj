@@ -3,6 +3,7 @@ package com.test.project;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -64,11 +65,10 @@ public class MainActivity extends AppCompatActivity {
         btn_alarm.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,alarm.class);
+                Intent intent = new Intent(MainActivity.this,alarm_list.class);
                 startActivity(intent);
             }
         });
-
 
         //*************************** using news api **************************
 
@@ -92,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
-
                 news_marquee.setText(str);
             }
         }, new Response.ErrorListener() {

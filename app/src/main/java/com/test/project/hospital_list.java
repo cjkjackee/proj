@@ -83,6 +83,7 @@ public class hospital_list extends AppCompatActivity {
                 calDis(loc);
             }catch (Exception e){
                 Toast.makeText(this,"please open gps & wait for a sec", Toast.LENGTH_SHORT).show();
+                init();
                 recreate();
             }
         }catch (SecurityException e){}
